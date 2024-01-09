@@ -13,7 +13,7 @@ import time
 from datetime import datetime
 import sqlite3
 import threading
-
+import os
 
 # Create a database for option data
 
@@ -147,4 +147,5 @@ def main():
 # Run the script
 if __name__ == "__main__":
     main()
+
 
