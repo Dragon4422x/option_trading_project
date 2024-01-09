@@ -17,11 +17,10 @@ import threading
 
 # Create a database for option data
 
-# In[2]:
-
+database_path = os.path.expanduser('~/option_database/options.db')
 
 # Connect to the SQLite database. If it doesn't exist, it will be created.
-conn = sqlite3.connect('/option_database/options.db')
+conn = sqlite3.connect(database_path)
 
 # Create a cursor object using the cursor method
 cursor = conn.cursor()
@@ -109,7 +108,7 @@ def insert_data_to_db(db_connection, table_name, data_frame, expiration_date):
 # Function to fetch and store data for a specific symbol and expiration date
 def handle_data_for_symbol_and_date(symbol, expiration_date, interval, stop_event):
     while not stop_event.is_set():
-        conn = sqlite3.connect('/option_database/options.db')
+        conn = sqlite3.connect(database_path)
         try:
             # Fetch the options data
             calls, puts = fetch_options_data(symbol, expiration_date)
@@ -148,58 +147,4 @@ def main():
 # Run the script
 if __name__ == "__main__":
     main()
-
-
-# In[ ]:
-
-
-
-
-
-# In[ ]:
-
-
-
-
-
-# In[ ]:
-
-
-
-
-
-# In[ ]:
-
-
-
-
-
-# In[ ]:
-
-
-
-
-
-# In[ ]:
-
-
-
-
-
-# In[ ]:
-
-
-
-
-
-# In[ ]:
-
-
-
-
-
-# In[ ]:
-
-
-
 
